@@ -9,7 +9,7 @@ use tokio::sync::RwLock;
 use tracing::{error, info};
 use tracing_subscriber::EnvFilter;
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), Box<dyn Error>> {
     // basic logging with thread ids & names. Use RUST_LOG=info to adjust displayed levels.
     tracing_subscriber::fmt()
