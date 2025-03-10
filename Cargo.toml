@@ -2,10 +2,15 @@
 name = "st-async-tcp-broadcast"
 version = "0.1.0"
 edition = "2024"
+default-run = "server"
 
 [[bin]]
 name = "server"
 path = "src/main.rs"
+
+[[bin]]
+name = "server_st"
+path = "src/main_st.rs"
 
 [dependencies]
 tokio = { version = "1.44.0", features = ["full"] }
