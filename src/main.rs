@@ -57,7 +57,7 @@ async fn process(
         .await
         .get_mut(&addr)
         .ok_or("Invalid state. Addr is not in clients map.")?
-        .write_all(format!("LOGIN: {}\n", addr.port()).as_ref())
+        .write_all(format!("LOGIN:{}\n", addr.port()).as_ref())
         .await?;
 
     let reader = tokio::io::BufReader::new(read);

@@ -63,7 +63,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                         .borrow()
                         .get(&addr)
                         .unwrap()
-                        .send(format!("LOGIN: {}\n", addr.port()))
+                        .send(format!("LOGIN:{}\n", addr.port()))
                     {
                         error!("Could not send login ack message {}. Exiting task.", e);
                         return;
@@ -73,7 +73,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
                     let mut read = reader.lines();
                     while let Ok(Some(line)) = read.next_line().await {
-                        let msg = format!("{}: {}\n", addr.port(), line);
+                        let msg = format!("MESSAGE:{} {}\n", addr.port(), line);
                         info!("read {:?}. Total clients: {}", &msg, clients.borrow().len());
 
                         // write ack
